@@ -13,7 +13,7 @@ namespace FirstMVC.Controllers
 
         public IActionResult Index()
         {
-            return View(DB.AddUser());
+            return View(DB.users);
         }
 
         public IActionResult Login()
@@ -41,13 +41,13 @@ namespace FirstMVC.Controllers
                 return View();
 
             }
-            DB.AddUser(add.ToUser());
+            DB.users.Add(add.ToUser());
             return RedirectToAction("Index");
         }
 
         public IActionResult Update(int id)
         {
-            UpdateUserDTO selectedUser = DB.AddUser().Find(u => u.ID == id).ToUserDTO();
+            UpdateUserDTO selectedUser = DB.users.Find(u => u.ID == id).ToUserDTO();
             return View(selectedUser);
         }
 
@@ -59,9 +59,9 @@ namespace FirstMVC.Controllers
                 return View();
             }
             //action
-            DB.AddUser()[update.Id - 1].LastName = update.LastName;
-            DB.AddUser()[update.Id - 1].FirstName = update.FirstName;
-            DB.AddUser()[update.Id - 1].Email = update.Email;
+            DB.users[update.Id - 1].LastName = update.LastName;
+            DB.users[update.Id - 1].FirstName = update.FirstName;
+            DB.users[update.Id - 1].Email = update.Email;
             return RedirectToAction("Index");
         }
         public IActionResult Delete()
@@ -71,7 +71,7 @@ namespace FirstMVC.Controllers
 
         public IActionResult Read(int id)
         {
-            User selectedUser = DB.AddUser().Find(u => u.ID == id);
+            User selectedUser = DB.users.Find(u => u.ID == id);
             return View(selectedUser);
         }
     }
