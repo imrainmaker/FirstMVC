@@ -4,7 +4,6 @@ namespace FirstMVC.Models
 {
     public class UpdateUserDTO
     {
-        public int Id { get; set; }
         [Required]
         public string FirstName { get; set; }
         [Required]

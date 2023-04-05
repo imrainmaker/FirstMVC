@@ -47,21 +47,24 @@ namespace FirstMVC.Controllers
 
         public IActionResult Update(int id)
         {
+            ViewBag.id = id;
             UpdateUserDTO selectedUser = DB.users.Find(u => u.ID == id).ToUserDTO();
             return View(selectedUser);
         }
 
         [HttpPost]
-        public IActionResult Update(UpdateUserDTO update)
+        public IActionResult Update(int id, UpdateUserDTO update)
         {
             if (!ModelState.IsValid)
             {
                 return View();
             }
             //action
-            DB.users[update.Id - 1].LastName = update.LastName;
-            DB.users[update.Id - 1].FirstName = update.FirstName;
-            DB.users[update.Id - 1].Email = update.Email;
+
+            User user = DB.users.Find(u => u.ID == id);
+            user.LastName = update.LastName;
+            user.FirstName = update.FirstName;
+            user.Email = update.Email;
             return RedirectToAction("Index");
         }
         public IActionResult Delete()
