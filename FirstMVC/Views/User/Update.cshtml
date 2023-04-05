@@ -4,13 +4,6 @@
 <a class="btn btn-primary" asp-area="" asp-controller="User" asp-action="Index" role="button">Retour</a>
 <hr />
 
-@*<p>
-    @Model.Id<br />
-    @Model.LastName<br />
-    @Model.FirstName<br />
-    @Model.Email
-
-</p>*@
 
 <form method="post">
     <fieldset>
@@ -19,10 +12,12 @@
             <label for="lastName">Nom</label>
             <input type="text" class="form-control" asp-for="LastName" id="lastName" value="@Model.LastName">
         </div>
+        <br />
         <div class="form-group">
             <label for="firstname">Prenom</label>
             <input type="text" class="form-control" asp-for="FirstName" id="firstname" value="@Model.FirstName">
         </div>
+        <br />
         <div class="form-group">
             <label for="mail">Email address</label>
             <input type="email" class="form-control" asp-for="Email" id="mail" aria-describedb="emailHelp" value="@Model.Email">
