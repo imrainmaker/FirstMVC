@@ -1,0 +1,37 @@
+﻿@model AddUserDTO;
+
+<a class="btn btn-primary" asp-area="" asp-controller="User" asp-action="Index" role="button">Retour</a>
+<hr />
+
+<form method="post">
+    <fieldset>
+        <legend>Ajouter un utilisateur</legend>
+        <div class="form-group">
+            <label for="lastName">Nom</label>
+            <input type="text" class="form-control" asp-for="LastName" id="lastName" placeholder="Entrer votre nom">
+        </div>
+        <div class="form-group">
+            <label for="firstname">Prenom</label>
+            <input type="text" class="form-control" asp-for="FirstName" id="firstname" placeholder="Entrer votre prenom">
+        </div>
+        <div class="form-group">
+            <label for="mail">Email address</label>
+            <input type="email" class="form-control" asp-for="Email" id="mail" aria-describedb ="emailHelp" placeholder="Entrer votre email">
+            <small id="emailHelp" class="form-text text-muted">Votre email ne sera votre identifiant de connexion.</small>
+        </div>
+        <div class="form-group">
+            <label for="password">Mot de passe</label>
+            <input type="password" class="form-control" asp-for="Password" id="password" aria-describedby="passwordlHelp"  placeholder="Entrer votre mot de passe">
+            <small id="passwordlHelp" class="form-text text-muted">Votre mot de passe doit contenir au moins une minuscule, une majuscule, un chiffre, un charactère spécial.</small>
+        </div>
+        <div class="form-group">
+            <label for="checkPassword">Verification du mot de passe</label>
+            <input type="password" class="form-control" asp-for="CheckPassword" id="checkPassword" placeholder="Repeter votre mot de passe">
+        </div>
+        <br />
+        <button type="submit" class="btn btn-primary">Submit</button>
+    </fieldset>
+
+</form>
+
+
