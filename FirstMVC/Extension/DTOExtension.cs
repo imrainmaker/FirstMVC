@@ -9,5 +9,16 @@ namespace FirstMVC.Extension
         {
             return new User(++currentID,userDto.FirstName,userDto.LastName,userDto.Email,userDto.Password);
         }
+
+        public static UpdateUserDTO ToUserDTO(this User user)
+        {
+            return new UpdateUserDTO()
+            {
+                Email = user.Email,
+                FirstName = user.FirstName,
+                LastName = user.LastName,
+                Id = user.ID,
+            };
+        }
     }
 }
