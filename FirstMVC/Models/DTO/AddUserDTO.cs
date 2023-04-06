@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace FirstMVC.Models
+namespace FirstMVC.Models.DTO
 {
     public class AddUserDTO
     {
@@ -16,6 +16,6 @@ namespace FirstMVC.Models
         public string Password { get; set; }
         [Compare("Password")]
         public string CheckPassword { get; set; }
- 
+
     }
 }

@@ -1,7 +1,14 @@
+using FirstMVC.Repository.Interfaces;
+using FirstMVC.Repository.Repositories;
+using FirstMVC.Service.Interfaces;
+using FirstMVC.Service.Services;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
+builder.Services.AddSingleton<IUserService, UserService>();
+builder.Services.AddTransient<IUserRepository, FakeDBUserRepository>(); 
 
 var app = builder.Build();
 

@@ -1,4 +1,5 @@
 ﻿using FirstMVC.Models;
+using FirstMVC.Models.DTO;
 
 namespace FirstMVC.Extension
 {
@@ -17,7 +18,6 @@ namespace FirstMVC.Extension
                 Email = user.Email,
                 FirstName = user.FirstName,
                 LastName = user.LastName,
-                Id = user.ID,
             };
         }
     }

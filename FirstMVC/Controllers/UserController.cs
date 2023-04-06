@@ -1,6 +1,8 @@
 ﻿using FirstMVC.Extension;
 using FirstMVC.FakeDB;
-using FirstMVC.Models;
+using FirstMVC.Models.DTO;
+using FirstMVC.Service.Interfaces;
+using FirstMVC.Service.Services;
 using Microsoft.AspNetCore.Mvc;
 
 namespace FirstMVC.Controllers
@@ -8,23 +10,30 @@ namespace FirstMVC.Controllers
     public class UserController : Controller
     {
 
+        private readonly IUserService _userService;
 
-
+        public UserController(IUserService userService)
+        {
+            _userService = userService;
+        }
 
         public IActionResult Index()
         {
-            return View(DB.users);
+            return View(_userService.Get());
         }
 
-        public IActionResult Login()
+        public IActionResult Read(int id)
         {
-            return View();
+            return View(_userService.GetById(id));
         }
 
-        [HttpPost]
-        public IActionResult Login(string email, string password)
+        public IActionResult Delete(int id)
         {
-            return View();
+            if (_userService.Delete(id))
+            {
+                return RedirectToAction("Index");
+            }
+            return View("NotFound");
         }
 
 
@@ -41,7 +50,7 @@ namespace FirstMVC.Controllers
                 return View();
 
             }
-            DB.users.Add(add.ToUser());
+            _userService.CreateUser(add);
             return RedirectToAction("Index");
         }
 
@@ -59,23 +68,21 @@ namespace FirstMVC.Controllers
             {
                 return View();
             }
-            //action
 
-            User user = DB.users.Find(u => u.ID == id);
-            user.LastName = update.LastName;
-            user.FirstName = update.FirstName;
-            user.Email = update.Email;
+            _userService.Update(id, update);
             return RedirectToAction("Index");
         }
-        public IActionResult Delete()
+
+        [HttpPost]
+        public IActionResult Login(string email, string password)
         {
             return View();
         }
 
-        public IActionResult Read(int id)
+        public IActionResult Login()
         {
-            User selectedUser = DB.users.Find(u => u.ID == id);
-            return View(selectedUser);
+            return View();
         }
+
     }
 }

@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace FirstMVC.Models
+namespace FirstMVC.Models.DTO
 {
     public class UpdateUserDTO
     {
