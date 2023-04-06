@@ -18,6 +18,7 @@ namespace FirstMVC.Controllers
             _userService = userService;
         }
 
+
         public IActionResult Index()
         {
             return View(_userService.Get());
@@ -77,7 +78,6 @@ namespace FirstMVC.Controllers
 
         public IActionResult UpdatePassword(int id)
         {
-            User user = _userService.GetById(id);
             ViewBag.id = id;
             return View();
            

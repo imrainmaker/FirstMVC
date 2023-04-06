@@ -2,26 +2,49 @@
 @model List<User>;
 
 
+
 <h1>Gestion Utilisateur</h1>
-
-
-
-
-
-<a class="btn btn-primary" asp-area="" asp-controller="User" asp-action="Add" role="button">Ajouter un Utilisateur</a>
 <hr />
 
-<h3>Liste des utilisateurs</h3>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                <strong>Nom</strong>
+            </th>
+            <th>
+                <strong>Prenom</strong>
+            </th>
+            <th>
+                <strong>Email</strong>
+            </th>
+            <th>
+                <a class="btn btn-primary" id="AddButton" asp-controller="User" asp-action="Add" role="button">Ajouter un Utilisateur</a>
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.FirstName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.LastName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Email)
+                </td>
+                <td>
+                    <a class="btn btn-primary" asp-area="" asp-controller="User" asp-action="Read" asp-route-id="@item.ID" role="button">Voir</a>
+                    <a class="btn btn-warning" asp-area="" asp-controller="User" asp-action="Update" asp-route-id="@item.ID" role="button">Editer</a>
+                    <a class="btn btn-danger" asp-area="" asp-controller="User" asp-action="Delete" asp-route-id="@item.ID" role="button">Supprimer</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
 
-<ul>
-    @foreach(User u in @Model)
-    {
-        <li> @u.LastName @u.FirstName </li>
-        <br />
-        <a class="btn btn-primary" asp-area="" asp-controller="User" asp-action="Read" asp-route-id="@u.ID" role="button">Voir</a>
-        <a class="btn btn-warning" asp-area="" asp-controller="User" asp-action="Update" asp-route-id="@u.ID" role="button">Editer</a>
-        <a class="btn btn-danger" asp-area="" asp-controller="User" asp-action="Delete" asp-route-id="@u.ID" role="button">Supprimer</a>
-        <hr />
-    }
-</ul>
+
 
