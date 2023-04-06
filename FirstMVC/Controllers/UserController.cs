@@ -1,4 +1,5 @@
 ﻿using FirstMVC.FakeDB;
+using FirstMVC.Models;
 using FirstMVC.Models.DTO;
 using FirstMVC.Models.Mapper;
 using FirstMVC.Service.Interfaces;
@@ -56,20 +57,44 @@ namespace FirstMVC.Controllers
 
         public IActionResult Update(int id)
         {
+            User user = _userService.GetById(id);
             ViewBag.id = id;
-            UpdateUserDTO selectedUser = DB.users.Find(u => u.ID == id).ToUserDTO();
-            return View(selectedUser);
+
+            return View(user.ToUserDTO());
         }
 
         [HttpPost]
-        public IActionResult Update(int id, UpdateUserDTO update)
+        public IActionResult Update(int id, UpdateUserDTO user)
         {
             if (!ModelState.IsValid)
             {
                 return View();
             }
 
-            _userService.Update(id, update);
+            _userService.Update(id, user);
+            return RedirectToAction("Index");
+        }
+
+        public IActionResult UpdatePassword(int id)
+        {
+            User user = _userService.GetById(id);
+            ViewBag.id = id;
+            return View();
+           
+        }
+
+        [HttpPost]
+        public IActionResult UpdatePassword(int id, UpdateUserPasswordDTO mdp)
+        {
+            if (!ModelState.IsValid)
+            {
+                return View();
+            }
+            if (_userService.UpdatePassword(id, mdp) is null)
+            {
+                ModelState.AddModelError("Password", "Le mot de passe ne correspond pas au mot de passe actuel");
+                return View();
+            }
             return RedirectToAction("Index");
         }
 

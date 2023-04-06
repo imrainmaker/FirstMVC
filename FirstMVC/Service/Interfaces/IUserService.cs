@@ -15,7 +15,7 @@ namespace FirstMVC.Service.Interfaces
 
         User? Update(int id, UpdateUserDTO user);
 
-
+        User? UpdatePassword(int id, UpdateUserPasswordDTO mdp);
 
     }
 }

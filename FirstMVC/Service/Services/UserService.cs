@@ -45,6 +45,17 @@ namespace FirstMVC.Service.Services
             return _userRepository.Update(userUpdate);
         }
 
+        public User? UpdatePassword(int id, UpdateUserPasswordDTO mdp) 
+        {
+            User userUpdate = _userRepository.GetById(id);
+            if(mdp.Password == userUpdate.Password)
+            {
+                userUpdate.Password = mdp.NewPassword;
+                return _userRepository.Update(userUpdate);
+            }
+            return null;
+        }
+
         public User? CreateUser(AddUserDTO user)
         {
             return _userRepository.CreateUser(user.ToUser());
