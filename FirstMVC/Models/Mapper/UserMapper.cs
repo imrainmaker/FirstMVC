@@ -1,14 +1,14 @@
 ﻿using FirstMVC.Models;
 using FirstMVC.Models.DTO;
 
-namespace FirstMVC.Extension
+namespace FirstMVC.Models.Mapper
 {
-    public static class DTOExtension
+    public static class UserMapper
     {
         static int currentID = 10;
         public static User ToUser(this AddUserDTO userDto)
         {
-            return new User(++currentID,userDto.FirstName,userDto.LastName,userDto.Email,userDto.Password);
+            return new User(++currentID, userDto.FirstName, userDto.LastName, userDto.Email, userDto.Password);
         }
 
         public static UpdateUserDTO ToUserDTO(this User user)

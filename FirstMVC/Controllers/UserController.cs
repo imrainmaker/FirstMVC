@@ -1,6 +1,6 @@
-﻿using FirstMVC.Extension;
-using FirstMVC.FakeDB;
+﻿using FirstMVC.FakeDB;
 using FirstMVC.Models.DTO;
+using FirstMVC.Models.Mapper;
 using FirstMVC.Service.Interfaces;
 using FirstMVC.Service.Services;
 using Microsoft.AspNetCore.Mvc;

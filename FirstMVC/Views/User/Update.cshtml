@@ -7,21 +7,25 @@
 
 <form asp-route-id="@ViewBag.id" method="post">
     <fieldset>
+        <div asp-validation-summary="ModelOnly"></div>
         <legend>Editer un utilisateur</legend>
         <div class="form-group">
             <label for="lastName">Nom</label>
             <input type="text" class="form-control" asp-for="LastName" id="lastName" value="@Model.LastName">
+            <span class="text-warning" asp-validation-for="LastName"></span>
         </div>
         <br />
         <div class="form-group">
             <label for="firstname">Prenom</label>
             <input type="text" class="form-control" asp-for="FirstName" id="firstname" value="@Model.FirstName">
+            <span class="text-warning" asp-validation-for="FirstName"></span>
         </div>
         <br />
         <div class="form-group">
             <label for="mail">Email address</label>
             <input type="email" class="form-control" asp-for="Email" id="mail" aria-describedb="emailHelp" value="@Model.Email">
-            <small id="emailHelp" class="form-text text-muted">Votre email ne sera votre identifiant de connexion.</small>
+            <small id="emailHelp" class="form-text text-muted">Votre email ne sera votre identifiant de connexion.</small><br />
+            <span class="text-warning" asp-validation-for="Email"></span>
         </div>
         <br />
         <button type="submit" class="btn btn-primary">Submit</button>

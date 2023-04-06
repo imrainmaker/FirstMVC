@@ -1,7 +1,7 @@
-﻿using FirstMVC.Extension;
-using FirstMVC.FakeDB;
+﻿using FirstMVC.FakeDB;
 using FirstMVC.Models;
 using FirstMVC.Models.DTO;
+using FirstMVC.Models.Mapper;
 using FirstMVC.Repository.Interfaces;
 using FirstMVC.Service.Interfaces;
 
