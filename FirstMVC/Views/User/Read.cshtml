@@ -6,11 +6,11 @@
 <h1>Details utilisateur</h1>
 
 <ul>
-    <li>ID : @Model.ID</li>
+    <li>ID : @Model.Id</li>
     <li>Prénom : @Model.FirstName</li>
     <li>Nom : @Model.LastName</li>
     <li>Email : @Model.Email</li>
-    @if(Model.FavoriteMovie is not null)
+@*    @if(Model.FavoriteMovie is not null)
     {
         <li>Films favoris : </li>
         <ol>
@@ -19,8 +19,8 @@
                 <li>@movie</li>
             }
         </ol>
-    }
+    }*@
 </ul>
-<a class="btn btn-warning" asp-area="" asp-controller="User" asp-action="Update" asp-route-id="@Model.ID" role="button">Editer l'utilisateur</a>
-<a class="btn btn-warning" asp-area="" asp-controller="User" asp-action="UpdatePassword" asp-route-id="@Model.ID" role="button">Modifier le mot de passe</a>
-<a class="btn btn-danger" asp-area="" asp-controller="User" asp-action="Delete" asp-route-id="@Model.ID" role="button">Supprimer</a>
+<a class="btn btn-warning" asp-area="" asp-controller="User" asp-action="Update" asp-route-id="@Model.Id" role="button">Editer l'utilisateur</a>
+<a class="btn btn-warning" asp-area="" asp-controller="User" asp-action="UpdatePassword" asp-route-id="@Model.Id" role="button">Modifier le mot de passe</a>
+<a class="btn btn-danger" asp-area="" asp-controller="User" asp-action="Delete" asp-route-id="@Model.Id" role="button">Supprimer</a>

@@ -1,14 +1,18 @@
+using FirstMVC.Models.DBContext;
 using FirstMVC.Repository.Interfaces;
 using FirstMVC.Repository.Repositories;
 using FirstMVC.Service.Interfaces;
 using FirstMVC.Service.Services;
+using Microsoft.CodeAnalysis.Options;
+using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
-builder.Services.AddSingleton<IUserService, UserService>();
-builder.Services.AddTransient<IUserRepository, FakeDBUserRepository>(); 
+builder.Services.AddScoped<IUserService, UserService>();
+builder.Services.AddScoped<IUserRepository, EfUserRepository>();
+builder.Services.AddDbContext<DataContext>();
 
 var app = builder.Build();
 

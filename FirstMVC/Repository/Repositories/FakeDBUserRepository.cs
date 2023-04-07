@@ -9,12 +9,12 @@ namespace FirstMVC.Repository.Repositories
 
         public IEnumerable<User> Get()
         {
-            return DB.users.OrderBy(u => u.ID).ToList();
+            return DB.users.OrderBy(u => u.Id).ToList();
         }
 
         public User GetById(int id)
         {
-            User user = DB.users.Find(u => u.ID == id);
+            User user = DB.users.Find(u => u.Id == id);
             return user;
         }
 
@@ -27,7 +27,7 @@ namespace FirstMVC.Repository.Repositories
         {
             try
             {
-                User userToReplace = DB.users.Find(u => u.ID == user.ID);
+                User userToReplace = DB.users.Find(u => u.Id == user.Id);
                 DB.users.Remove(userToReplace);
                 DB.users.Add(user);
                 return user;
